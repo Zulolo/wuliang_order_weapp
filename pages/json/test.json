@@ -1,0 +1,34 @@
+{
+    "cost": 160,
+    "number": 6,
+    "name": "369快餐",
+    "order": [
+        {
+            "name": "小炖肉",
+            "src": "http://shanggao.wshoto.com/attachment/images/3/2017/08/yaAdnbT9nGmNUA9Tzy6NrM0sYDs5g5.jpg",
+            "sales": "4",
+            "rating": "15",
+            "price": "25",
+            "numb": 5
+        },
+        {
+            "name": "豉油辣炒小观蚬蛤",
+            "src": "http://shanggao.wshoto.com/attachment/images/3/2017/08/zJHRS71aLjhs5LBTSbeIbarAeh7sQ7.jpg",
+            "sales": "4",
+            "rating": "12",
+            "price": "35",
+            "numb": 1
+        }
+    ],
+    "appid": "ohcjx0EVjDnj7LWxjX_M1Z2ozQ88",
+    "flag": "0",
+    "userinfo": {
+        "name": "省道但是",
+        "tel": "13151297760",
+        "sex": "1",
+        "address": "",
+        "addrdetail": "",
+        "bz": "",
+        "servicetime": ""
+    }
+}

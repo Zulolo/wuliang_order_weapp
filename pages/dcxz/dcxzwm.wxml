@@ -1,0 +1,73 @@
+<view class="container">
+  <!--地址时间选择 start-->
+  <view class="weui-panel">
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <navigator url="dcxzinput" open-type="redirect" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>{{xzdzname}}</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+          <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange" class="pickerbp">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__hd">
+                <image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" />
+              </view>
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>送达时间：{{time}}</view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--地址时间选择 end-->
+
+  <!--订单详情 start-->
+  <view class="dcxq">
+    <view class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <view style="display: inline-block; vertical-align: middle;color: #d9d9d9;">{{dcxz.name}}</view>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_access" wx:for="{{dcxz.order}}" wx:key="">
+      <view class="weui-cell__bd">
+        <view style="display: inline-block; vertical-align: middle">{{item.name}}</view>
+      </view>
+      <view class="sl">x{{item.numb}}</view>
+      <view class="weui-cell__ft">￥{{item.price}}</view>
+    </view>
+    <view class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <view style="display: inline-block; vertical-align: middle">合计</view>
+      </view>
+      <view class="weui-cell__ft">￥{{dcxz.cost}}</view>
+    </view>
+  </view>
+  <!--订单详情 end-->
+
+  <!--请输入备注 start-->
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea bindinput="bindTextAreaBlur" class="weui-textarea" placeholder="请输入备注（可不填写）" style="height: 3.3em" value="{{bz}}"/>
+      </view>
+    </view>
+  </view>
+  <!--请输入备注 end-->
+
+  <!--提交订单 start-->
+  <view class="suborder">
+    <view class="sub_left">待支付：￥{{dcxz.cost}}</view>
+    <view class="sub_right" bindtap="sub">提交订单</view>
+  </view>
+  <!--提交订单 end-->
+
+</view>

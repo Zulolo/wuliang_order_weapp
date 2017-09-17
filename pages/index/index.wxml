@@ -1,0 +1,121 @@
+<view class="container">
+  <!--头部名称 start-->
+  <view class="weui-panel weui-panel_access header">
+    <view class="weui-panel__bd" hover-class="weui-cell_active">
+      <view class="gh"></view>
+      <view class="weui-media-box weui-media-box_appmsg">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="{{ info.icon }}" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">{{ info.name }}</view>
+          <view class="weui-media-box__desc">
+            <!--评分的星星 start-->
+            <view class="he_xx">
+              <view class="xx_icon" wx:for="{{starlevel}}"  wx:key="">
+                <image class="ic" src="../../images/xx.jpg" />
+              </view>
+            </view>
+            <!--评分的星星 end-->
+            <!--多少钱一位 start-->
+            <view class="ds">￥{{ info.money }}/1</view>
+            <!--多少钱一位 end-->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--头部名称 end-->
+
+  <!--navbar start-->
+  <view class="weui-flex navbar">
+    <navigator url="../../pages/dc/dc?flag=0" class="weui-flex__item nb_li" hover-class="weui-cell_active">
+      <view class="placeholder nb_lid">
+        <view class="nb_icon">
+          <image class="ic" src="../../images/001.jpg" />
+        </view>
+        <view class="nb_text">点餐</view>
+      </view>
+    </navigator>
+    <navigator url="../../pages/yd/yd" class="weui-flex__item nb_li" hover-class="weui-cell_active">
+      <view class="placeholder nb_lid">
+        <view class="nb_icon">
+          <image class="ic" src="../../images/002.png" />
+        </view>
+        <view class="nb_text">预定</view>
+      </view>
+    </navigator>
+    <navigator url="../../pages/pd/pd" class="weui-flex__item nb_li" hover-class="weui-cell_active">
+      <view class="placeholder nb_lid">
+        <view class="nb_icon">
+          <image class="ic" src="../../images/003.jpg" />
+        </view>
+        <view class="nb_text">排队</view>
+      </view>
+    </navigator>
+    <navigator url="../../pages/dc/dc?flag=1" class="weui-flex__item nb_li" hover-class="weui-cell_active">
+      <view class="placeholder nb_lid">
+        <view class="nb_icon">
+          <image class="ic" src="../../images/004.jpg" />
+        </view>
+        <view class="nb_text">外卖</view>
+      </view>
+    </navigator>
+  </view>
+  <!--navbar end-->
+
+  <!--文本栏 start-->
+  <view class="weui-cells weui-cells_after-title" class="ebl">
+      <view class="weui-cell">
+          <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+              <image src="../../images/1.png" class="ic"/>
+          </view>
+          <view class="weui-cell__bd">
+              <view>{{ info.name }}</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+      <view class="weui-cell"  bindtap="seeMap">
+          <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+              <image src="../../images/2.png" class="ic"/>
+          </view>
+          <view class="weui-cell__bd">
+              <view>{{ info.address }}</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+      <view class="weui-cell"  bindtap="tapCall">
+          <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+              <image src="../../images/3.png" class="ic"/>
+          </view>
+          <view class="weui-cell__bd">
+              <view>电话：{{ info.tel }}</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+              <image src="../../images/4.png" class="ic"/>
+          </view>
+          <view class="weui-cell__bd">
+              <view>营业时间：{{ info.starttime }}-{{ info.endtime }}</view>
+          </view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+              <image src="../../images/5.png" class="ic"/>
+          </view>
+          <view class="weui-cell__bd">
+              <view>微信：{{ info.wechat }}</view>
+          </view>
+      </view>
+  </view>
+  <!--文本栏 end-->
+
+  <!--我的按钮 start-->
+  <navigator url="../../pages/wd/wd" class="my_bt">
+      <image class="ic" src="../../images/user.png" />
+  </navigator>
+  <!--我的按钮 end-->
+
+</view>

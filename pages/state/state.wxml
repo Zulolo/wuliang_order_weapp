@@ -1,0 +1,106 @@
+<!--进度状态 start-->
+<view class="zjd">
+    <view class="weui-progress jdt">
+        <view class="yq" style="{{yq1}}">
+            <view class="yq_text">等待处理</view>
+        </view>
+        <view class="weui-progress__bar bz">
+            <progress percent="{{progress}}" color="#fff" stroke-width="3" />
+        </view>
+        <view class="yq" style="{{yq2}}">
+            <view class="yq_text">已确认</view>
+        </view>
+        <view class="weui-progress__bar bz">
+            <progress percent="{{progress2}}" color="#fff" stroke-width="3" />
+        </view>
+        <view class="yq" style="{{yq3}}">
+            <view class="yq_text">已完成</view>
+        </view>
+    </view>
+</view>
+<!--进度状态 end-->
+
+<!--按钮 start-->
+<view class="button-sp-area btn" wx:if="{{ flag === '0'}}">
+    <view class="weui-flex">
+        <view class="weui-flex__item">
+            <view class="placeholder">
+                <button class="weui-btn btn1" type="default" bindtap="cancle">取消订单</button>
+            </view>
+        </view>
+        <view class="weui-flex__item">
+            <view class="placeholder">
+                <button class="weui-btn btn2" type="primary" bindtap="sure">确认订单</button>
+            </view>
+        </view>
+    </view>
+</view>
+<!--按钮 end-->
+
+<!--商家信息 start-->
+<view class="weui-cells weui-cells_after-title">
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image src="../../images/1.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">{{ state.info.name }}</view>
+    </navigator>
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image src="../../images/3.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">{{ state.info.tel }}</view>
+    </navigator>
+</view>
+<!--商家信息 start-->
+
+<!--菜单详情 start-->
+<view class="weui-form-preview cdxq">
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">付款总金额</view>
+            <view class="weui-form-preview__value_in-hd">¥{{ state.cost }}</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item" wx:for="{{state.menu}}" wx:key=""> 
+            <view class="weui-form-preview__label">{{ item.name }}</view>
+            <view class="sl">x{{ item.numb }}</view>
+            <view class="weui-form-preview__value">￥{{ item.price }}</view>
+        </view>
+    </view>
+</view>
+<!--菜单详情 end-->
+
+<!--订单详情 start-->
+<view class="weui-form-preview cdxq ddxq">
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">订单详情</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">订单号</view>
+            <view class="weui-form-preview__value">{{ state.order.ordnumber }}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">订单状态</view>
+            <view class="weui-form-preview__value" wx:if="{{ flag === '0'}}">待付款</view>
+            <view class="weui-form-preview__value" wx:if="{{ flag !== '0'}}">已付款</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">下单时间</view>
+            <view class="weui-form-preview__value">{{ state.order.ctime }}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">姓名</view>
+            <view class="weui-form-preview__value">{{ state.order.name }}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">电话</view>
+            <view class="weui-form-preview__value">{{ state.order.tel }}</view>
+        </view>
+    </view>
+</view>
+<!--订单详情 end-->

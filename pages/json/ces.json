@@ -1,0 +1,43 @@
+{
+    "errcode": "0",
+    "errmsg": "",
+    "data": {
+        "info": {
+            "name": "男人的店",
+            "tel": "13151297760"
+        },
+        "cost": "2555",
+        "menu": [
+            {
+                "name": "炸鸡",
+                "src": "http://i2.kiimg.com/601998/a955867016875a41.jpg",
+                "sales": 22,
+                "rating": 3,
+                "price": 15,
+                "numb": 1
+            },
+            {
+                "name": "汉堡",
+                "src": "http://i4.piimg.com/601998/9ce47f2f19d7717d.jpg",
+                "sales": 22,
+                "rating": 3,
+                "price": 10,
+                "numb": 2
+            },
+            {
+                "name": "鸡翅",
+                "src": "http://i4.piimg.com/601998/a88338a6d392a569.jpg",
+                "sales": 22,
+                "rating": 3,
+                "price": 11,
+                "numb": 3
+            }
+        ],
+        "order":{
+            "ordnumber": "12346549651651496849641",
+            "ctime": "2017-06-19 15:11:21",
+            "name": "班的",
+            "tel": "13151297760"
+        }
+    }
+}

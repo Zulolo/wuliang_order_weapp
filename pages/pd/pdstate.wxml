@@ -1,0 +1,18 @@
+<view class="container">
+    <!--大的状态模块 start-->
+    <view class="hst">
+        <view class="ndhm">您的号码</view>
+        <view class="ndhk">005</view>'
+    </view>
+    <!--大的状态模块 end-->
+
+    <!--提示信息 start-->
+    <view class="tipbp">您还需要等待4桌，已叫号到001号</view>
+    <!--提示信息 end-->
+
+    <!--刷新状态的按钮 start-->
+    <button class="weui-btn" type="primary"style="margin-top: 35px;">预约点菜</button>
+    <button class="weui-btn cebt" type="default">取消排队</button>
+    <button class="weui-btn cebt" type="default">刷新状态</button>
+    <!--刷新状态的按钮 end-->
+</view>

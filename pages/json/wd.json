@@ -1,0 +1,61 @@
+{
+    "errcode": "0",
+    "errmsg": "",
+    "data": {
+        //待确认
+        "tbc": [
+            {
+                //下单时间
+                "ctime": "2017-08-19 15:20",
+                //总价
+                "cost": "123",
+                //头图
+                "icon": "http://tvax1.sinaimg.cn/crop.9.0.493.493.180/4b0c804aly8fig2bhbxm4j20e80dpq3f.jpg",
+                //索引id
+                "id": "0"
+            },
+            {
+                "ctime": "2017-08-19 15:20",
+                "cost": "123",
+                "icon": "http://tvax1.sinaimg.cn/crop.9.0.493.493.180/4b0c804aly8fig2bhbxm4j20e80dpq3f.jpg",
+                "id": "1"
+            }
+        ],
+        //已确认
+        "confirmed": [
+            {
+                "ctime": "2017-08-19 15:20",
+                "cost": "123",
+                "icon": "http://tvax1.sinaimg.cn/crop.9.0.493.493.180/4b0c804aly8fig2bhbxm4j20e80dpq3f.jpg",
+                "id": "2"
+            },
+            {
+                "ctime": "2017-08-19 15:20",
+                "cost": "123",
+                "icon": "http://tvax1.sinaimg.cn/crop.9.0.493.493.180/4b0c804aly8fig2bhbxm4j20e80dpq3f.jpg",
+                "id": "3"
+            },
+            {
+                "ctime": "2017-08-19 15:20",
+                "cost": "13",
+                "icon": "http://tvax1.sinaimg.cn/crop.9.0.493.493.180/4b0c804aly8fig2bhbxm4j20e80dpq3f.jpg",
+                "id": "3"
+            }
+        ],
+        //已完成
+        "completed": [
+            {
+                "ctime": "2017-08-19 15:20",
+                "cost": "123",
+                "icon": "http://tvax1.sinaimg.cn/crop.9.0.493.493.180/4b0c804aly8fig2bhbxm4j20e80dpq3f.jpg",
+                "id": "4"
+            },
+            {
+                "ctime": "2017-08-19 15:20",
+                "cost": "123",
+                "icon": "http://tvax1.sinaimg.cn/crop.9.0.493.493.180/4b0c804aly8fig2bhbxm4j20e80dpq3f.jpg",
+                "id": "5"
+            }
+        ]
+    }
+}

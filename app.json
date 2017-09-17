@@ -1,0 +1,27 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/dc/dc",
+    "pages/yd/yd",
+    "pages/pd/pd",
+    "pages/wm/wm",
+    "pages/wd/wd",
+    "pages/state/state",
+    "pages/payment/payment",
+    "pages/payment/msg_success",
+    "pages/payment/msg_fail",
+    "pages/dcxz/dcxz",
+    "pages/dcxz/dcxzwm",
+    "pages/dcxz/dcxzinput",
+    "pages/pd/pdinput",
+    "pages/pd/pdstate"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarTextStyle":"#fff",
+    "navigationBarTitleText": "点餐",
+    "navigationBarBackgroundColor": "#F1544E",
+    "backgroundColor": "#F1544E"
+  }
+}

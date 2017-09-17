@@ -1,0 +1,47 @@
+{
+    "appid": "ohcjx0EVjDnj7LWxjX_M1Z2ozQ88",
+    //订单状态：0是点菜，1是外卖，2是排队
+    "flag": 0,
+    "userinfo":{
+        //用户姓名
+        "name": "王强",
+        //用户手机号
+        "tel": "tel",
+        //用户性别0是男，1是女
+        "sex": "0",
+        //用户地址
+        "address":"崇安区广益街道天湖家园",
+        //详细地址
+        "addrdetail":"187号201室",
+        //备注
+        "bz":"",
+        //送达时间
+        "servicetime":"05:30"
+    },
+    "cost": "1211",
+    "number": "15",
+    "order": [
+        {
+            "name": "炸鸡",
+            "src": "http://i2.kiimg.com/601998/a955867016875a41.jpg",
+            "sales": 22,
+            "rating": 3,
+            "price": 15,
+            "numb": 3
+        },{
+            "name": "桂圆莲子粥",
+            "src": "http://i4.piimg.com/601998/a88338a6d392a569.jpg",
+            "sales": 22,
+            "rating": 3,
+            "price": 15,
+            "numb": 8
+        },{
+            "name": "土豆牛肉盖浇饭",
+            "src": "http://i4.piimg.com/601998/a014d6160fd7b504.jpg",
+            "sales": 22,
+            "rating": 3,
+            "price": 9,
+            "numb": 4
+        }
+    ]
+}

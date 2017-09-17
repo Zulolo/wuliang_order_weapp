@@ -1,0 +1,66 @@
+.header {
+  background: #fff;
+  border-bottom: 25rpx solid #F3F3F3;
+}
+.header .gh {
+  height: 15rpx;
+  border: 0;
+}
+.header .weui-media-box::before {
+  content: none;
+}
+.header .weui-media-box__title {
+  margin-top: -20rpx;
+}
+.header .he_xx .xx_icon {
+  float: left;
+  width: 25rpx;
+  height: 25rpx;
+}
+.header .he_xx .xx_icon .ic {
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+}
+.header .ds {
+  padding-top: 10rpx;
+}
+.navbar {
+  background: #fff;
+  border-bottom: 25rpx solid #F3F3F3;
+}
+.navbar .nb_li .nb_lid .nb_icon {
+  width: 125rpx;
+  height: 125rpx;
+  margin: 25rpx auto;
+  margin-bottom: 10rpx;
+}
+.navbar .nb_li .nb_lid .nb_icon .ic {
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+}
+.navbar .nb_li .nb_lid .nb_text {
+  text-align: center;
+  padding-bottom: 25rpx;
+}
+.ebl {
+  background: #fff;
+}
+.ebl .ic {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+.my_bt {
+  position: fixed;
+  width: 100rpx;
+  height: 100rpx;
+  bottom: 60rpx;
+  right: 60rpx;
+}
+.my_bt .ic {
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+}

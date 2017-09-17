@@ -1,0 +1,37 @@
+{
+    "errcode": "0",
+    "errmsg": "",
+    "data": {
+        //商家名称
+        "name": "颠三倒四多所多",
+        //总价格
+        "cost": "54654",
+        //已点菜单
+        "menu": [
+            {
+                "name": "炸鸡",
+                "src": "http://i2.kiimg.com/601998/a955867016875a41.jpg",
+                "sales": 22,
+                "rating": 3,
+                "price": 15,
+                "numb": 0
+            },
+            {
+                "name": "汉堡",
+                "src": "http://i4.piimg.com/601998/9ce47f2f19d7717d.jpg",
+                "sales": 22,
+                "rating": 3,
+                "price": 10,
+                "numb": 0
+            },
+            {
+                "name": "鸡翅",
+                "src": "http://i4.piimg.com/601998/a88338a6d392a569.jpg",
+                "sales": 22,
+                "rating": 3,
+                "price": 11,
+                "numb": 0
+            }
+        ]
+    }
+}
