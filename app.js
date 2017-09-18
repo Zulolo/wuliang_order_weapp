@@ -43,7 +43,7 @@ App({
         success: function (loginCode) {
           var appid = 'wx8449a5bd701c38e8'; //填写微信小程序appid
           var secret = '7abfc4a1482e3438c0b700148d56ac2d'; //填写微信小程序secret
-          var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appid + '&secret=' + secret + '&js_code=' + loginCode.code + '&grant_type=authorization_code';
+          var url = 'https://www.zulolo.com/sns/jscode2session?appid=' + appid + '&secret=' + secret + '&js_code=' + loginCode.code + '&grant_type=authorization_code';
           //调用request请求api转换登录凭证
           wx.request({
             url: url,
@@ -61,7 +61,7 @@ App({
   },
   //封装获取数据的方式
   ajax: function (url, data, fun, post) {
-    var method = "post";
+    var method = "GET";
     var header = {
       'content-type': 'application/json'
     };
@@ -82,7 +82,7 @@ App({
         console.log(res.data);
         var data = {
           errcode: '0',
-          data: res.data.result
+          data: res.data
         }
         fun(data);
         // fun(res.data);
@@ -96,16 +96,16 @@ App({
     //菜单信息
     menu: "https://www.zulolo.com/wuliang_order/dishes",
     //状态接口
-    wd: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/state",
+    wd: "https://www.zulolo.com/mock/59979e65059b9c566dc7bcc6/index/state",
     //获取我的订单数据
-    state: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/stateq",
+    state: "https://www.zulolo.com/mock/59979e65059b9c566dc7bcc6/index/stateq",
     //支付页面
     //payment: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/payment",
-    payment:"http://shanggao.wshoto.com/app/index.php?i=3&c=entry&id=2&do=orderdetail_api&m=weisrc_dish",
+    payment:"https://www.zulolo.com/app/index.php?i=3&c=entry&id=2&do=orderdetail_api&m=weisrc_dish",
     //待支付页面
-    dcxz: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/dcxz",
+    dcxz: "https://www.zulolo.com/mock/59979e65059b9c566dc7bcc6/index/dcxz",
     //post点菜数据接口
-    podc: "http://shanggao.wshoto.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=addtoorder_api&m=weisrc_dish"
+    podc: "https://www.zulolo.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=addtoorder_api&m=weisrc_dish"
   },
   globalData: {
     appid: "",
