@@ -41,20 +41,12 @@ App({
       //调用微信登录接口
       wx.login({
         success: function (loginCode) {
-          var appid = 'wx8449a5bd701c38e8'; //填写微信小程序appid
-          var secret = '7abfc4a1482e3438c0b700148d56ac2d'; //填写微信小程序secret
-          var url = 'https://www.zulolo.com/sns/jscode2session?appid=' + appid + '&secret=' + secret + '&js_code=' + loginCode.code + '&grant_type=authorization_code';
-          //调用request请求api转换登录凭证
-          wx.request({
-            url: url,
-            header: {
-              'content-type': 'application/json'
-            },
-            success: function (res) {
-              that.globalData.appid = res.data.openid;
-              bc(res.data.openid); //获取openid
-            }
-          })
+          var appid = 'xxxxxxxxxxx'; //填写微信小程序appid
+          var secret = 'ssssssssssssssssss'; //填写微信小程序secret
+          that.ajax(that.ceport.login, { appid, secret}, function (res) {
+            that.globalData.appid = res.data.openid;
+            bc(res.data.openid); //获取openid
+          }, "POST");
         }
       })
     }
@@ -91,6 +83,7 @@ App({
   },
   //测试接口
   ceport: {
+    login: "https://www.zulolo.com/wuliang_order/login",
     //主页信息接口
     portal: "https://www.zulolo.com/wuliang_order/shop_info",
     //菜单信息
