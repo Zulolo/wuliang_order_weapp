@@ -13,17 +13,17 @@ App({
       var that = this;
       m.menu.forEach(function (v, i) {
         that.menu[i] = {};
-        that.menu[i].typeName = v.typeName;
+        that.menu[i].typeName = v.ProductType;
         that.menu[i].menuContent = [];
         v.menuContent.forEach(function (m, n) {
           that.menu[i].menuContent[n] = {};
-          that.menu[i].menuContent[n].name = m.name;
-          that.menu[i].menuContent[n].src = m.src;
-          that.menu[i].menuContent[n].sales = m.sales;
-          that.menu[i].menuContent[n].rating = m.rating;
-          that.menu[i].menuContent[n].price = m.price;
-          that.menu[i].menuContent[n].numb = m.numb;
-          that.menu[i].menuContent[n].id = m.id;
+          that.menu[i].menuContent[n].name = m.ProductName;
+          that.menu[i].menuContent[n].src = m.ProductImage;
+          that.menu[i].menuContent[n].sales = 66;
+          that.menu[i].menuContent[n].rating = 3;
+          that.menu[i].menuContent[n].price = m.ProductPrice;
+          that.menu[i].menuContent[n].numb = 888;
+          that.menu[i].menuContent[n].id = m._id;
         }, this);
       }, this);
     }
@@ -31,6 +31,9 @@ App({
       that.globalData.menu = new Cgarry(m.data);
       that.globalData.wmmenu = new Cgarry(m.data);
       that.globalData.pdmenu = new Cgarry(m.data);
+      // console.log(that.globalData.menu);
+      // console.log(that.globalData.wmmenu);
+      // console.log(that.globalData.pdmenu);
     });
   },
   getAppid: function (bc) {
@@ -52,7 +55,7 @@ App({
     }
   },
   //封装获取数据的方式
-  ajax: function (url, data, fun, post) {
+  ajax: function (url, query_data, fun, post) {
     var method = "GET";
     var header = {
       'content-type': 'application/json'
@@ -68,15 +71,15 @@ App({
     wx.request({
       url: url,
       method: method,
-      data: data,
+      data: query_data,
       header: header,
       success: function (res) {
         console.log(res.data);
-        var data = {
+        var repack_data = {
           errcode: '0',
           data: res.data
         }
-        fun(data);
+        fun(repack_data);
         // fun(res.data);
       }
     });

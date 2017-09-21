@@ -29,6 +29,7 @@ Page({
     //获取数据
     app.ajax(app.ceport.portal, {}, function (res) {
       //渲染其他数据
+      console.log(res.data);
       that.setData({
         info: res.data
       })
