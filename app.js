@@ -22,7 +22,7 @@ App({
           that.menu[i].menuContent[n].sales = 66;
           that.menu[i].menuContent[n].rating = 3;
           that.menu[i].menuContent[n].price = m.ProductPrice;
-          that.menu[i].menuContent[n].numb = 888;
+          that.menu[i].menuContent[n].numb = 0;
           that.menu[i].menuContent[n].id = m._id;
         }, this);
       }, this);

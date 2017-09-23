@@ -39,9 +39,9 @@ Page({
       })
       //渲染星星的个数
       var starlevel = [];
-      if (res.data.level > 0) {
+      if (res.data.rank > 0) {
         var i, len;
-        for (i = 1, len = res.data.level; i <= len; i++) {
+        for (i = 1, len = res.data.rank; i <= len; i++) {
           starlevel.push(1);
         }
         if(i = len){
