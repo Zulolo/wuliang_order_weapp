@@ -44,9 +44,11 @@ App({
       //调用微信登录接口
       wx.login({
         success: function (loginCode) {
-          var appid = 'xxxxxxxxxxx'; //填写微信小程序appid
-          var secret = 'ssssssssssssssssss'; //填写微信小程序secret
-          that.ajax(that.ceport.login, { appid, secret}, function (res) {
+          var code = loginCode.code;
+          var appid = 'xxxxxxxxx'; //填写微信小程序appid
+          var secret = 'zzzzzzzzzzzzz'; //填写微信小程序secret
+          that.ajax(that.ceport.login, { code, appid, secret}, function (res) {
+            console.log("login code is:", res);
             that.globalData.appid = res.data.openid;
             bc(res.data.openid); //获取openid
           }, "POST");
