@@ -2,9 +2,10 @@
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    // var logs = wx.getStorageSync('logs') || []
+    // logs.unshift(Date.now())
+    // wx.setStorageSync('logs', logs)
+    this.globalData.session = wx.getStorageSync('session');
     var that = this;
     function Cgarry(m) {
       this.cost = m.cost;
@@ -35,6 +36,7 @@ App({
       // console.log(that.globalData.wmmenu);
       // console.log(that.globalData.pdmenu);
     });
+
   },
   getAppid: function (bc) {
     var that = this;
@@ -45,13 +47,45 @@ App({
       wx.login({
         success: function (loginCode) {
           var code = loginCode.code;
-          var appid = 'xxxxxxxxx'; //填写微信小程序appid
-          var secret = 'zzzzzzzzzzzzz'; //填写微信小程序secret
+          var appid = 'xxxxxxxxxx'; //填写微信小程序appid
+          var secret = 'yyyyyyyyyyyyyy'; //填写微信小程序secret
           that.ajax(that.ceport.login, { code, appid, secret}, function (res) {
-            console.log("login code is:", res);
+            // console.log("login code is:", res);
             that.globalData.appid = res.data.openid;
+            that.globalData.session = res.data.session;
+            wx.setStorageSync('session', res.data.session);
             bc(res.data.openid); //获取openid
           }, "POST");
+        }
+      });
+
+      // 获取用户信息
+      wx.getSetting({
+        success: function (res) {
+          if (res.authSetting['scope.userInfo']) {
+            // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+            wx.getUserInfo({
+              success: res => {
+                that.ajax(that.ceport.userinfo, res, function (res) {
+                  console.log("user info check response:", res);
+                }, "POST");
+              }
+            })
+          } else {
+            wx.authorize({
+              scope: 'scope.userInfo',
+              success() {
+                // 用户已经同意小程序使用user info功能，后续调用 wx.startRecord 接口不会弹窗询问
+                wx.getUserInfo({
+                  success: res => {
+                    that.ajax(that.ceport.userinfo, res, function (res) {
+                      console.log("user info check response:", res);
+                    }, "POST");
+                  }
+                })
+              }
+            })
+          }
         }
       })
     }
@@ -60,12 +94,14 @@ App({
   ajax: function (url, query_data, fun, post) {
     var method = "GET";
     var header = {
-      'content-type': 'application/json'
+      'content-type': 'application/json',
+      'session': this.globalData.session
     };
     if (post) {
       method = "POST";
       header = {
-        "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/x-www-form-urlencoded",
+        'session': this.globalData.session
       };
     }
     console.log(method);
@@ -89,6 +125,7 @@ App({
   //测试接口
   ceport: {
     login: "https://www.zulolo.com/wuliang_order/login",
+    userinfo: "https://www.zulolo.com/wuliang_order/user_info",
     //主页信息接口
     portal: "https://www.zulolo.com/wuliang_order/shop_info",
     //菜单信息
@@ -107,6 +144,7 @@ App({
   },
   globalData: {
     appid: "",
+    session: "",
     menu: {
       cost: 0,
       number: 0,
