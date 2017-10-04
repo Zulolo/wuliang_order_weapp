@@ -7,54 +7,59 @@ App({
     // wx.setStorageSync('logs', logs)
     this.globalData.session = wx.getStorageSync('session');
     var that = this;
-    function Cgarry(m) {
-      this.cost = m.cost;
-      this.number = m.number;
-      this.menu = [];
-      var that = this;
-      m.menu.forEach(function (v, i) {
-        that.menu[i] = {};
-        that.menu[i].typeName = v.ProductType;
-        that.menu[i].menuContent = [];
-        v.menuContent.forEach(function (m, n) {
-          that.menu[i].menuContent[n] = {};
-          that.menu[i].menuContent[n].name = m.ProductName;
-          that.menu[i].menuContent[n].src = m.ProductImage;
-          that.menu[i].menuContent[n].sales = 66;
-          that.menu[i].menuContent[n].rating = 3;
-          that.menu[i].menuContent[n].price = m.ProductPrice;
-          that.menu[i].menuContent[n].numb = 0;
-          that.menu[i].menuContent[n].id = m._id;
-        }, this);
-      }, this);
-    }
-    this.ajax(that.ceport.menu, {}, function (m) {
-      that.globalData.menu = new Cgarry(m.data);
-      that.globalData.wmmenu = new Cgarry(m.data);
-      that.globalData.pdmenu = new Cgarry(m.data);
-      // console.log(that.globalData.menu);
-      // console.log(that.globalData.wmmenu);
-      // console.log(that.globalData.pdmenu);
-    });
-
+    // this.getOpenID(function (openid) {
+    //   // console.log("openid:", openid);
+    // });
   },
-  getAppid: function (bc) {
+
+  Cgarry: function (m) {
+    this.cost = m.cost;
+    this.number = m.number;
+    this.menu = [];
     var that = this;
-    if (that.globalData.appid != "") {
-      bc(that.globalData.appid);
+    m.menu.forEach(function (v, i) {
+      that.menu[i] = {};
+      that.menu[i].typeName = v.ProductType;
+      that.menu[i].menuContent = [];
+      v.menuContent.forEach(function (m, n) {
+        that.menu[i].menuContent[n] = {};
+        that.menu[i].menuContent[n].name = m.ProductName;
+        that.menu[i].menuContent[n].src = m.ProductImage;
+        that.menu[i].menuContent[n].sales = 66;
+        that.menu[i].menuContent[n].rating = 3;
+        that.menu[i].menuContent[n].price = m.ProductPrice;
+        that.menu[i].menuContent[n].numb = 0;
+        that.menu[i].menuContent[n].id = m._id;
+      }, this);
+    }, this);
+  },
+
+  chechOwnSession: function (bc) {
+    var that = this;
+    that.ajax(that.ceport.login, null, function (res) {
+      bc();
+    });
+  },
+
+  handleUserInfo: function(reply) {
+    console.log("handleUserInfo:", reply);
+  },
+
+  getOpenID: function (bc) {
+    var that = this;
+    // console.log("what fuck is bc?", bc);
+    if (that.globalData.openid != "") {
+      bc();
     } else {
       //调用微信登录接口
       wx.login({
         success: function (loginCode) {
           var code = loginCode.code;
-          var appid = 'xxxxxxxxxx'; //填写微信小程序appid
-          var secret = 'yyyyyyyyyyyyyy'; //填写微信小程序secret
-          that.ajax(that.ceport.login, { code, appid, secret}, function (res) {
-            // console.log("login code is:", res);
-            that.globalData.appid = res.data.openid;
+          that.ajax(that.ceport.login, { code }, function (res) {
+            that.globalData.openid = res.data.openid;
             that.globalData.session = res.data.session;
             wx.setStorageSync('session', res.data.session);
-            bc(res.data.openid); //获取openid
+            bc(); //获取openid
           }, "POST");
         }
       });
@@ -66,9 +71,7 @@ App({
             // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
             wx.getUserInfo({
               success: res => {
-                that.ajax(that.ceport.userinfo, res, function (res) {
-                  console.log("user info check response:", res);
-                }, "POST");
+                that.ajax(that.ceport.userinfo, res, that.handleUserInfo, "POST");
               }
             })
           } else {
@@ -78,9 +81,7 @@ App({
                 // 用户已经同意小程序使用user info功能，后续调用 wx.startRecord 接口不会弹窗询问
                 wx.getUserInfo({
                   success: res => {
-                    that.ajax(that.ceport.userinfo, res, function (res) {
-                      console.log("user info check response:", res);
-                    }, "POST");
+                    that.ajax(that.ceport.userinfo, res, that.handleUserInfo, "POST");
                   }
                 })
               }
@@ -90,6 +91,26 @@ App({
       })
     }
   },
+
+  ownLogin: function (bc) {
+    var that = this
+    if (that.globalData.openid != "") {
+      wx.checkSession({
+        success: function () {
+          // openid 未过期，并且在本生命周期一直有效
+          // check 自己的session 有没有过期
+          that.chechOwnSession(bc);
+        },
+        fail: function () {
+          //登录态过期
+          that.getOpenID(bc);
+        }
+      })
+    } else {
+      that.getOpenID(bc);
+    }
+  },
+
   //封装获取数据的方式
   ajax: function (url, query_data, fun, post) {
     var method = "GET";
@@ -104,7 +125,7 @@ App({
         'session': this.globalData.session
       };
     }
-    console.log(method);
+    console.log(method, url);
     //获取数据
     wx.request({
       url: url,
@@ -118,10 +139,10 @@ App({
           data: res.data
         }
         fun(repack_data);
-        // fun(res.data);
       }
     });
   },
+
   //测试接口
   ceport: {
     login: "https://www.zulolo.com/wuliang_order/login",
@@ -143,7 +164,7 @@ App({
     podc: "https://www.zulolo.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=addtoorder_api&m=weisrc_dish"
   },
   globalData: {
-    appid: "",
+    openid: "",
     session: "",
     menu: {
       cost: 0,

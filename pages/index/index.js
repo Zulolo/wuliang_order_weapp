@@ -4,6 +4,7 @@ Page({
   data: {
     "cesh": [1, 1, 1]
   },
+
   //查看地图
   seeMap: function () {
     var that = this;
@@ -13,6 +14,7 @@ Page({
       scale: 28
     })
   },
+
   //打电话
   tapCall: function () {
     var that = this;
@@ -20,16 +22,18 @@ Page({
       phoneNumber: that.data.info.tel
     })
   },
+
   //初始化
   onLoad: function () {
-    app.getAppid(function(appid){
-      console.log("appid:", appid);
-    });
-    var that = this
-    //获取数据
+    var that = this;
+    app.ownLogin(that.refreshAllInfo);
+  },
+
+  // 刷新商户和菜单等信息 
+  refreshAllInfo: function () {
+    var that = this;
     app.ajax(app.ceport.portal, {}, function (res) {
       //渲染其他数据
-      console.log(res.data);
       that.setData({
         info: res.data
       })
@@ -44,7 +48,7 @@ Page({
         for (i = 1, len = res.data.rank; i <= len; i++) {
           starlevel.push(1);
         }
-        if(i = len){
+        if (i = len) {
           that.setData({
             info: res.data,
             starlevel: starlevel
@@ -52,5 +56,13 @@ Page({
         }
       }
     });
-  }
+    app.ajax(app.ceport.menu, {}, function (m) {
+      app.globalData.menu = new app.Cgarry(m.data);
+      app.globalData.wmmenu = new app.Cgarry(m.data);
+      app.globalData.pdmenu = new app.Cgarry(m.data);
+      // console.log(that.globalData.menu);
+      // console.log(that.globalData.wmmenu);
+      // console.log(that.globalData.pdmenu);
+    });
+  },
 })
