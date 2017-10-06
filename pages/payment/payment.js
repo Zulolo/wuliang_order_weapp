@@ -13,7 +13,7 @@ Page({
       var postdatastr = JSON.stringify(postdata);
       console.log(postdatastr);
       //获取数据
-      app.ajax(app.ceport.payment, postdatastr, function (res) {
+      app.ajax(app.api_endpoint.payment, postdatastr, function (res) {
         console.log(res);
         that.setData({
           xs: res.data,

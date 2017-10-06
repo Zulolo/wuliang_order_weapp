@@ -64,3 +64,15 @@
   height: 100%;
   vertical-align: top;
 }
+.manage_bt {
+  position: fixed;
+  width: 100rpx;
+  height: 100rpx;
+  bottom: 60rpx;
+  left: 60rpx;
+}
+.manage_bt .ic {
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+}

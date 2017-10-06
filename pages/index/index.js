@@ -2,7 +2,8 @@
 var app = getApp()
 Page({
   data: {
-    "cesh": [1, 1, 1]
+    "cesh": [1, 1, 1],
+    "info": {"manage_access": false}    
   },
 
   //查看地图
@@ -26,43 +27,17 @@ Page({
   //初始化
   onLoad: function () {
     var that = this;
-    app.ownLogin(that.refreshAllInfo);
+    app.ownLogin([that.refreshShopInfo, app.getDishesInfo]);
   },
 
   // 刷新商户和菜单等信息 
-  refreshAllInfo: function () {
+  refreshShopInfo: function () {
     var that = this;
-    app.ajax(app.ceport.portal, {}, function (res) {
-      //渲染其他数据
+    app.getShopInfo(function(){
+      console.log("refreshShopInfo", app.globalData.info);
       that.setData({
-        info: res.data
+        info: app.globalData.info
       })
-      wx.setStorage({
-        key: "name",
-        data: res.data.name
-      })
-      //渲染星星的个数
-      var starlevel = [];
-      if (res.data.rank > 0) {
-        var i, len;
-        for (i = 1, len = res.data.rank; i <= len; i++) {
-          starlevel.push(1);
-        }
-        if (i = len) {
-          that.setData({
-            info: res.data,
-            starlevel: starlevel
-          })
-        }
-      }
-    });
-    app.ajax(app.ceport.menu, {}, function (m) {
-      app.globalData.menu = new app.Cgarry(m.data);
-      app.globalData.wmmenu = new app.Cgarry(m.data);
-      app.globalData.pdmenu = new app.Cgarry(m.data);
-      // console.log(that.globalData.menu);
-      // console.log(that.globalData.wmmenu);
-      // console.log(that.globalData.pdmenu);
     });
   },
 })

@@ -7,6 +7,7 @@
     "pages/pd/pd",
     "pages/wm/wm",
     "pages/wd/wd",
+    "pages/manage/manage",
     "pages/state/state",
     "pages/payment/payment",
     "pages/payment/msg_success",

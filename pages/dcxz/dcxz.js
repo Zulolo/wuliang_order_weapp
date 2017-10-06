@@ -124,7 +124,7 @@ Page({
               servicetime: ""
             };
             var jsonur = JSON.stringify(postData);
-            app.ajax(app.ceport.podc, jsonur, function(m){
+            app.ajax(app.api_endpoint.podc, jsonur, function(m){
               //这边支付接口传回的参数需要重新处理
               var id = m.data.orderid;
               var url = '../payment/payment?id=' + id;

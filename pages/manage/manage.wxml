@@ -1,0 +1,22 @@
+<view class="page">
+  <view>
+    <text>点击下框选择图片</text>
+  </view>
+  <view>
+      <view>
+        <image class="dish_image" mode="aspectFit" src="{{img_src}}" bindtap="select_img"></image>
+      </view>
+  </view>
+
+  <view>
+    <input class="dish_info" placeholder="菜名" maxlength="30" bindinput ="dish_name_input" auto-focus />
+    <input class="dish_info" placeholder="类型" maxlength="20" bindinput ="dish_type_input" />
+    <input class="dish_info" placeholder="大小" maxlength="10" bindinput ="dish_size_input" />
+    <input class="dish_info" placeholder="价格" type="digit" maxlength="20" bindinput ="dish_price_input" />
+    <input class="dish_info" placeholder="描述" maxlength="50" bindinput ="dish_desc_input" />
+  </view>
+
+  <view class="dish_submit">
+    <button type="default" bindtap="add_dish"> 提交 </button>
+  </view>
+</view>

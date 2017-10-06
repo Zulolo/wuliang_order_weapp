@@ -10,7 +10,7 @@ Page({
     onLoad: function () {
         var that = this;
         //获取数据
-        app.ajax(app.ceport.wd, {}, function (res) {
+        app.ajax(app.api_endpoint.wd, {}, function (res) {
             console.log(res);
             var tabs = that.tabs;
             var activeIndex = that.activeIndex;

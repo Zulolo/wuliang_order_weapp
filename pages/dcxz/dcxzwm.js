@@ -145,7 +145,7 @@ Page({
         };
         var postdatastr = JSON.stringify(postData);
         // console.log(postdatastr);
-        app.ajax(app.ceport.podc, postdatastr, function (m) {
+        app.ajax(app.api_endpoint.podc, postdatastr, function (m) {
           
           //这边支付接口传回的参数需要重新处理
           var id = m.data.orderid;

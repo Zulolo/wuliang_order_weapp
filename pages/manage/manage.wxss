@@ -1,0 +1,7 @@
+.dish_info{
+  margin:5px 0px 5px 0px;
+}
+
+.dish_image{
+  background: #eeeeee;
+}

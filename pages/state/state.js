@@ -70,7 +70,7 @@ Page({
 
     });
     //获取数据
-    app.ajax(app.ceport.state, {}, function (res) {
+    app.ajax(app.api_endpoint.state, {}, function (res) {
       that.setData({
         state: res.data,
         flag: options.flag,

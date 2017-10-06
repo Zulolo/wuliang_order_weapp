@@ -109,9 +109,15 @@
   <!--文本栏 end-->
 
   <!--我的按钮 start-->
-   <navigator url="../../pages/wd/wd" class="my_bt">
+  <navigator url="../../pages/wd/wd" class="my_bt">
       <image class="ic" src="../../images/user.png" />
   </navigator> 
   <!--我的按钮 end-->
+
+  <!--管理按钮 start-->
+  <navigator url="../../pages/manage/manage" class="manage_bt" wx:if="{{info.manage_access}}">
+      <image class="ic" src="../../images/manage.png" />
+  </navigator> 
+  <!--管理按钮 end-->
 
 </view>
