@@ -125,6 +125,7 @@ App({
     var that = this;
     that.ajax(that.api_endpoint.portal, {}, function (res) {
       that.globalData.info = res.data;
+      that.globalData.info.money = 10;
       wx.setStorage({
         key: "name",
         data: res.data.name
@@ -165,12 +166,7 @@ App({
     // console.log("Herder session", this.globalData.session);
     if (post) {
       method = "POST";
-      header = {
-        'content-Type': 'application/x-www-form-urlencoded',
-        'session': this.globalData.session
-      };
     }
-
     // console.log(method, url, file_path);
     //获取数据
     if (file_path && file_name) {
@@ -181,19 +177,19 @@ App({
         formData: query_data,
         header: header,
         success: function (res) {
-          console.log("wx.uploadFile", res);
+          console.log("wx.uploadFile response:", res);
           func(res);
         }
       })
     } else {
-      console.log("prequery", query_data);
+//      console.log("prequery", query_data);
       wx.request({
         url: url,
         method: method,
         data: query_data,
         header: header,
         success: function (res) {
-          console.log("wx.request", res);
+          console.log("wx.request response:", res);
           func(res);
         }
       });

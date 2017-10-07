@@ -3,50 +3,7 @@ var app = getApp()
 Page({
   data: {
       uploading: false,
-      img_src: "https://www.zulolo.com/images/default_dish.jpg",
-      dish_name: "熏肉大饼",
-      dish_type: "营养套餐",
-      dish_size: "中",
-      dish_price: 8.5,
-      dish_desc: "好吃的很"
-  },
-
-  dish_name_input: function (event) {
-    if (event.detail.value != "") {
-      this.setData({
-        dish_name: event.detail.value
-      })
-    }
-  },
-
-  dish_type_input: function (event) {
-    if (event.detail.value != "") {
-      this.setData({
-        dish_type: event.detail.value
-      })
-    }
-  },
-
-  dish_size_input: function (event) {
-    if (event.detail.value != "") {
-      this.setData({
-        dish_size: event.detail.value
-      })
-    }
-  },
-
-  dish_price_input: function (event) {
-    this.setData({
-      dish_price: parseFloat(event.detail.value)
-    })
-  },
-
-  dish_desc_input: function (event) {
-    if (event.detail.value != "") {
-      this.setData({
-        dish_desc: event.detail.value
-      })
-    }
+      img_src: "https://www.zulolo.com/images/default_dish.jpg"
   },
 
   select_img: function (event) {
@@ -88,32 +45,23 @@ Page({
 
   add_dish: function (event) {
     var that = this;
-    console.log(that.data.dish_name, that.data.dish_type, that.data.dish_size, that.data.dish_desc, that.data.dish_price);
-    if ((that.data.dish_name != "") && 
-      (that.data.dish_type != "") && 
-      (that.data.dish_size != "") && 
-      (that.data.dish_desc != "") && 
-      (that.data.dish_price > 0)) {   
-      var ProductName = that.data.dish_name;
-      var ProductType = that.data.dish_type;
-      var ProductSize = that.data.dish_size;
-      var ProductDesc = that.data.dish_desc;
-      var ProductPrice = that.data.dish_price;
+    var formData = event.detail.value;
+    console.log(formData);
+    if ((formData.ProductName.length != 0) && 
+      (formData.ProductType.length != 0) && 
+      (formData.ProductSize.length != 0) && 
+      (formData.ProductDesc.length != 0) && 
+      (parseFloat(formData.ProductPrice) > 0)) {   
 
       // add new dish
       if (that.data.img_src.startsWith("https://")) {
-        // no new image taken
-        app.ajax(app.api_endpoint.menu,
-          { ProductName, ProductType, ProductSize, ProductDesc, ProductPrice },
-          that.add_dish_cb, "POST");
+        app.ajax(app.api_endpoint.menu, formData, that.add_dish_cb, "POST");
       } else {
         // new image has been selected
-        app.ajax(app.api_endpoint.menu,
-          { ProductName, ProductType, ProductSize, ProductDesc, ProductPrice },
+        app.ajax(app.api_endpoint.menu, formData,
           that.add_dish_cb, "POST", "ProductImage", that.data.img_src);
       }
       
-
       // handling GUI
       that.data.uploading = true;
       wx.showLoading({

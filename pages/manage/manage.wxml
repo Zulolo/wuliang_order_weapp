@@ -8,15 +8,17 @@
       </view>
   </view>
 
-  <view>
-    <input class="dish_info" placeholder="菜名" maxlength="30" bindinput ="dish_name_input" auto-focus />
-    <input class="dish_info" placeholder="类型" maxlength="20" bindinput ="dish_type_input" />
-    <input class="dish_info" placeholder="大小" maxlength="10" bindinput ="dish_size_input" />
-    <input class="dish_info" placeholder="价格" type="digit" maxlength="20" bindinput ="dish_price_input" />
-    <input class="dish_info" placeholder="描述" maxlength="50" bindinput ="dish_desc_input" />
-  </view>
+  <form bindsubmit="add_dish">
+    <view>
+      <input name="ProductName" class="dish_info" placeholder="菜名" maxlength="30" auto-focus />
+      <input name="ProductType" class="dish_info" placeholder="类型" maxlength="20" />
+      <input name="ProductSize" class="dish_info" placeholder="大小" maxlength="10" />
+      <input name="ProductPrice" class="dish_info" placeholder="价格" type="digit" maxlength="20" />
+      <input name="ProductDesc" class="dish_info" placeholder="描述" maxlength="50" />
+    </view>
 
-  <view class="dish_submit">
-    <button type="default" bindtap="add_dish"> 提交 </button>
-  </view>
+    <view class="dish_submit">
+      <button formType="submit"> 提交 </button>
+    </view>
+  </form>
 </view>

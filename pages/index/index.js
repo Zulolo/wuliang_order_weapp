@@ -36,7 +36,8 @@ Page({
     app.getShopInfo(function(){
       console.log("refreshShopInfo", app.globalData.info);
       that.setData({
-        info: app.globalData.info
+        info: app.globalData.info,
+        starlevel: app.globalData.starlevel
       })
     });
   },
