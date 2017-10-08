@@ -4,7 +4,9 @@
       <scroll-view class="orderPage-sideBar" bindscrolltolower="lower" scroll-y="true">
         <block wx:for="{{menu}}" wx:key="">
           <view class="menuList">
-            <view class="menu {{index==selected?'selected':''}}" data-index="{{index}}" catchtap="turnMenu">{{item.typeName}}</view>
+            <view class="menu {{index==selected?'selected':''}}" data-index="{{index}}" catchtap="changeMenuType">
+              {{item.typeName}}
+            </view>
           </view>
         </block>
       </scroll-view>
@@ -30,13 +32,13 @@
       <view class="footer {{cost!=0?'active':''}}">
         <view class="howMuch">
           <view class="img" style="background:{{cost!=0?'#FFD161':'#E7E7E7'}};">
-              <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">{{number?number:0}}</view>
+            <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">{{number?number:0}}</view>
             <image src="../../images/trolley.png" style="width:60rpx;height:60rpx;"></image>
           </view>
           <view class="cost" hidden="{{cost==0}}">￥{{cost}}</view>
           <view class="free"></view>
         </view>
-        <view class="pay" bindtap="buy">{{cost!=0?'选好了':'选好了'}}</view>
+        <view class="pay" bindtap="placeOrder">{{cost!=0?'选好了':'选好了'}}</view>
       </view>
     </swiper-item>
   </view>

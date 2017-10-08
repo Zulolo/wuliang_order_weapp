@@ -12,17 +12,49 @@ Page({
     cost: 0,
     number: 0
   },
+
+  //监听页面加载
+  onLoad: function (options) {
+    var that = this;
+    console.log("options.flag", options.flag);
+    //重新获取高度
+    wx.getSystemInfo({
+      success: function (res) {
+        var height = "height:" + res.windowHeight + 'px;';
+        that.setData({
+          height: height,
+        })
+      }
+    });
+    var menu;
+    //渲染菜单数据
+    if (options.flag === "0") {
+      menu = app.globalData.menu;
+      console.log("001");
+    } else if (options.flag === "1") {
+      menu = app.globalData.wmmenu;
+      console.log("002");
+    } else if (options.flag === "2") {
+      menu = app.globalData.pdmenu;
+      console.log("003");
+    }
+    that.setData({
+      menu: menu.menu,
+      cost: menu.cost,
+      number: menu.number,
+      flag: options.flag
+    })
+  },
+
   //增加吃的
   addToTrolley: function (e) {
-    
     var info = this.data.menu;
     info[this.data.selected].menuContent[e.currentTarget.dataset.index].numb++;
-    this.data.number = + this.data.number + 1;
+    this.data.number++;
     var number = this.data.number;
     var flag = this.data.flag;
     var cost = Number(this.data.cost) + Number(this.data.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].price);
     console.log(cost);
-
     console.log('number=' + number);
     if (flag === "0") {
       app.globalData.menu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb++;
@@ -44,6 +76,7 @@ Page({
       flag: flag
     })
   },
+
   //减少吃的
   removeFromTrolley: function (e) {
     var info = this.data.menu;
@@ -76,47 +109,17 @@ Page({
       })
     }
   },
+
   //切换菜单
-  turnMenu: function (e) {
+  changeMenuType: function (e) {
     this.setData({
       selected: e.currentTarget.dataset.index
     })
     console.log(e.currentTarget.dataset.index);
   },
-  //监听页面加载
-  onLoad: function (options) {
-    var that = this;
-    console.log(options.flag === "0");
-    //重新获取高度
-    wx.getSystemInfo({
-      success: function (res) {
-        var height = "height:" + res.windowHeight + 'px;';
-        that.setData({
-          height: height,
-        })
-      }
-    });
-    var menu;
-    //渲染菜单数据
-    if (options.flag === "0") {
-      menu = app.globalData.menu;
-      console.log("001");
-    } else if (options.flag === "1") {
-      menu = app.globalData.wmmenu;
-      console.log("002");
-    } else if (options.flag === "2") {
-      menu = app.globalData.pdmenu;
-      console.log("003");
-    }
-    that.setData({
-      menu: menu.menu,
-      cost: menu.cost,
-      number: menu.number,
-      flag: options.flag
-    })
-    console.log(options.flag);
-  },
-  buy: function () {
+
+  //下单
+  placeOrder: function () {
     var that = this;
     wx.getStorage({
       key: 'name',
