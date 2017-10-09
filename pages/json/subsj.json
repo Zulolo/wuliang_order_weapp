@@ -27,21 +27,21 @@
             "sales": 22,
             "rating": 3,
             "price": 15,
-            "numb": 3
+            "amount": 3
         },{
             "name": "桂圆莲子粥",
             "src": "http://i4.piimg.com/601998/a88338a6d392a569.jpg",
             "sales": 22,
             "rating": 3,
             "price": 15,
-            "numb": 8
+            "amount": 8
         },{
             "name": "土豆牛肉盖浇饭",
             "src": "http://i4.piimg.com/601998/a014d6160fd7b504.jpg",
             "sales": 22,
             "rating": 3,
             "price": 9,
-            "numb": 4
+            "amount": 4
         }
     ]
 }

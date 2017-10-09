@@ -5,20 +5,20 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    app.getAppid(function (appid) {
+    app.getOpenID([function () {
       var postdata = {
-        appid: appid,
-        orderid: options.id
+        openid: app.globalData.openid,
+        orderid: options.orderid
       };
-      var postdatastr = JSON.stringify(postdata);
-      console.log(postdatastr);
+      // var postdatastr = JSON.stringify(postdata);
+      // console.log(postdatastr);
       //获取数据
-      app.ajax(app.api_endpoint.payment, postdatastr, function (res) {
+      app.ajax(app.api_endpoint.payment, postdata, function (res) {
         console.log(res);
         that.setData({
           xs: res.data,
           flag: options.flag,
-          id: options.id
+          orderid: options.orderid
         })
       });
       //获取商户名称
@@ -30,13 +30,13 @@ Page({
           });
         }
       });
-    });
+    }]);
   },
   //支付按钮
   pay: function () {
     var that = this;
-    var successurl = 'msg_success?flag=1&id=' + this.data.id;
-    var failurl = 'msg_fail?flag=0&id=' + this.data.id;
+    var successurl = 'msg_success?flag=1&id=' + this.data.orderid;
+    var failurl = 'msg_fail?flag=0&id=' + this.data.orderid;
     wx.requestPayment({
       'timeStamp': that.data.xs.timeStamp,
       'nonceStr': that.data.xs.nonceStr,

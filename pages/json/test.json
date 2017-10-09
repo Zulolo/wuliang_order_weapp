@@ -9,7 +9,7 @@
             "sales": "4",
             "rating": "15",
             "price": "25",
-            "numb": 5
+            "amount": 5
         },
         {
             "name": "豉油辣炒小观蚬蛤",
@@ -17,7 +17,7 @@
             "sales": "4",
             "rating": "12",
             "price": "35",
-            "numb": 1
+            "amount": 1
         }
     ],
     "appid": "ohcjx0EVjDnj7LWxjX_M1Z2ozQ88",

@@ -10,7 +10,7 @@
       <view class="weui-cell__bd">
         <view style="display: inline-block; vertical-align: middle">{{item.name}}</view>
       </view>
-      <view class="sl">x{{item.numb}}</view>
+      <view class="sl">x{{item.amount}}</view>
       <view class="weui-cell__ft">￥{{item.price}}</view>
     </view>
     <view class="weui-cell weui-cell_access">
@@ -54,7 +54,7 @@
           <view class="weui-label">桌号</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入桌号" type="number" bindinput="zh" value="{{zh}}" />
+          <input class="weui-input" placeholder="请输入桌号" type="number" bindinput="desk" value="{{desk}}" />
         </view>
       </view>
   </view>

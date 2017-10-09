@@ -21,9 +21,9 @@
               </view>
               <view class="price">￥ {{item.price}}</view>
             </view>
-            <view class="food-numb">
-              <view class="remove" bindtap="removeFromTrolley" hidden="{{item.numb==0}}" data-index="{{index}}">-</view>
-              <text class="text" hidden="{{item.numb==0}}">{{item.numb}}</text>
+            <view class="food-amount">
+              <view class="remove" bindtap="removeFromTrolley" hidden="{{item.amount==0}}" data-index="{{index}}">-</view>
+              <text class="text" hidden="{{item.amount==0}}">{{item.amount}}</text>
               <view class="add" bindtap="addToTrolley" data-index="{{index}}">+</view>
             </view>
           </view>

@@ -65,7 +65,7 @@
     <view class="weui-form-preview__bd">
         <view class="weui-form-preview__item" wx:for="{{state.menu}}" wx:key=""> 
             <view class="weui-form-preview__label">{{ item.name }}</view>
-            <view class="sl">x{{ item.numb }}</view>
+            <view class="sl">x{{ item.amount }}</view>
             <view class="weui-form-preview__value">￥{{ item.price }}</view>
         </view>
     </view>

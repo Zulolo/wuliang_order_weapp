@@ -49,7 +49,7 @@ Page({
   //增加吃的
   addToTrolley: function (e) {
     var info = this.data.menu;
-    info[this.data.selected].menuContent[e.currentTarget.dataset.index].numb++;
+    info[this.data.selected].menuContent[e.currentTarget.dataset.index].amount++;
     this.data.number++;
     var number = this.data.number;
     var flag = this.data.flag;
@@ -57,15 +57,15 @@ Page({
     console.log(cost);
     console.log('number=' + number);
     if (flag === "0") {
-      app.globalData.menu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb++;
+      app.globalData.menu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].amount++;
       app.globalData.menu.cost = cost;
       app.globalData.menu.number = number;
     } else if (flag === "1") {
-      app.globalData.wmmenu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb++;
+      app.globalData.wmmenu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].amount++;
       app.globalData.wmmenu.cost = cost;
       app.globalData.wmmenu.number = number;
     } else if (flag === "2") {
-      app.globalData.pdmenu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb++;
+      app.globalData.pdmenu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].amount++;
       app.globalData.pdmenu.cost = cost;
       app.globalData.pdmenu.number = number;
     }
@@ -81,23 +81,23 @@ Page({
   removeFromTrolley: function (e) {
     var info = this.data.menu;
     var cost = Number(this.data.cost) - Number(this.data.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].price);
-    var numb;
+    var amount;
     var number = this.data.number;
     var flag = this.data.flag;
-    if (info[this.data.selected].menuContent[e.currentTarget.dataset.index].numb != 0) {
-      info[this.data.selected].menuContent[e.currentTarget.dataset.index].numb--;
-      numb = info[this.data.selected].menuContent[e.currentTarget.dataset.index].numb;
+    if (info[this.data.selected].menuContent[e.currentTarget.dataset.index].amount != 0) {
+      info[this.data.selected].menuContent[e.currentTarget.dataset.index].amount--;
+      amount = info[this.data.selected].menuContent[e.currentTarget.dataset.index].amount;
       number = +number - 1;
       if (flag === "0") {
-        app.globalData.menu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb = numb;
+        app.globalData.menu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].amount = amount;
         app.globalData.menu.cost = cost;
         app.globalData.menu.number = number;
       } else if (flag === "1") {
-        app.globalData.wmmenu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb = numb;
+        app.globalData.wmmenu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].amount = amount;
         app.globalData.wmmenu.cost = cost;
         app.globalData.wmmenu.number = number;
       } else if (flag === "2") {
-        app.globalData.pdmenu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].numb = numb;
+        app.globalData.pdmenu.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].amount = amount;
         app.globalData.pdmenu.cost = cost;
         app.globalData.pdmenu.number = number;
       }
@@ -131,10 +131,10 @@ Page({
           name: res.data,
           order: []
         }
-        that.data.menu.forEach(function (v) {
-          v.menuContent.forEach(function (m) {
-            if (m.numb > 0) {
-              tjdata.order.push(m);
+        that.data.menu.forEach(function (category) {
+          category.menuContent.forEach(function (dish) {
+            if (dish.amount > 0) {
+              tjdata.order.push(dish);
             }
           }, this);
         }, this);

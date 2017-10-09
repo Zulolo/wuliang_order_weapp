@@ -41,7 +41,7 @@
       <view class="weui-cell__bd">
         <view style="display: inline-block; vertical-align: middle">{{item.name}}</view>
       </view>
-      <view class="sl">x{{item.numb}}</view>
+      <view class="sl">x{{item.amount}}</view>
       <view class="weui-cell__ft">￥{{item.price}}</view>
     </view>
     <view class="weui-cell weui-cell_access">

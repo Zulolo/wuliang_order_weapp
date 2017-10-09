@@ -19,7 +19,7 @@
                 "sales": 22,
                 "rating": 3,
                 "price": 15,
-                "numb": 1
+                "amount": 1
             },
             {
                 "name": "汉堡",
@@ -27,7 +27,7 @@
                 "sales": 22,
                 "rating": 3,
                 "price": 10,
-                "numb": 2
+                "amount": 2
             },
             {
                 "name": "鸡翅",
@@ -35,7 +35,7 @@
                 "sales": 22,
                 "rating": 3,
                 "price": 11,
-                "numb": 3
+                "amount": 3
             }
         ],
         //订单详情

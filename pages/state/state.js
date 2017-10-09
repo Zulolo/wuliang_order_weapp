@@ -60,7 +60,7 @@ Page({
   },
   onLoad: function (options) {
     console.log(options.flag);
-    console.log(options.id);
+    console.log(options.orderid);
 
     var that = this;
 
@@ -74,7 +74,7 @@ Page({
       that.setData({
         state: res.data,
         flag: options.flag,
-        id: options.id
+        id: options.orderid
       });
     });
     if (this.data.disabled) return;

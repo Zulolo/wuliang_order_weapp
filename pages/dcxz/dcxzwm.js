@@ -24,7 +24,7 @@ Page({
     name: '',
     tel: '',
     bz: '',
-    zh:"",
+    desk:"",
     endtime: '08:30',
     xzdzname: '请选择收货地址',
     radioItems: [
@@ -130,7 +130,7 @@ Page({
     } else {
       //整理post的提交数据
       var postData = that.data.dcxz;
-      app.getAppid(function (appid) {
+      app.getOpenID([function () {
         postData.appid = appid;
         postData.flag = "2";
         postData.userinfo = {
@@ -140,7 +140,7 @@ Page({
           address: that.data.address,
           addrdetail:  that.data.addrdetail,
           bz: that.data.bz,
-          zh: that.data.zh,
+          desk: that.data.desk,
           servicetime: that.data.time
         };
         var postdatastr = JSON.stringify(postData);
@@ -157,7 +157,7 @@ Page({
             })
           }, true);
         }, true);
-      });
+      }]);
     }
   },
   //同步姓名

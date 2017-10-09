@@ -106,7 +106,7 @@
   font-size: 30rpx;
   color: red;
 }
-.food-numb {
+.food-amount {
   height: 40rpx;
   width: 130rpx;
   display: flex;
@@ -116,21 +116,21 @@
   line-height: 40rpx;
   font-size: 25rpx;
 }
-.food-numb .add,
-.food-numb .remove {
+.food-amount .add,
+.food-amount .remove {
   width: 40rpx;
   height: 40rpx;
   border-radius: 30rpx;
   text-align: center;
 }
-.food-numb .add {
+.food-amount .add {
   font-size: 35rpx;
   line-height:42rpx;
   font-weight: 700;
   background: #FFD161;
   margin-left: 15rpx;
 }
-.food-numb .remove {
+.food-amount .remove {
   margin-right: 15rpx;
   line-height: 28rpx;
   font-size: 60rpx;

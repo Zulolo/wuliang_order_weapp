@@ -17,19 +17,19 @@ App({
     this.number = m.number;
     this.menu = [];
     var that = this;
-    m.menu.forEach(function (v, i) {
+    m.menu.forEach(function (category, i) {
       that.menu[i] = {};
-      that.menu[i].typeName = v.ProductType;
+      that.menu[i].typeName = category.ProductType;
       that.menu[i].menuContent = [];
-      v.menuContent.forEach(function (m, n) {
+      category.menuContent.forEach(function (dish, n) {
         that.menu[i].menuContent[n] = {};
-        that.menu[i].menuContent[n].name = m.ProductName;
-        that.menu[i].menuContent[n].src = m.ProductImage;
+        that.menu[i].menuContent[n].name = dish.ProductName;
+        that.menu[i].menuContent[n].src = dish.ProductImage;
         that.menu[i].menuContent[n].sales = 66;
         that.menu[i].menuContent[n].rating = 3;
-        that.menu[i].menuContent[n].price = m.ProductPrice;
-        that.menu[i].menuContent[n].numb = 0;
-        that.menu[i].menuContent[n].id = m._id;
+        that.menu[i].menuContent[n].price = dish.ProductPrice;
+        that.menu[i].menuContent[n].amount = 0;
+        that.menu[i].menuContent[n].id = dish._id;
       }, this);
     }, this);
   },
@@ -210,11 +210,11 @@ App({
     state: "https://www.zulolo.com/mock/59979e65059b9c566dc7bcc6/index/stateq",
     //支付页面
     //payment: "http://www.easy-mock.com/mock/59979e65059b9c566dc7bcc6/index/payment",
-    payment:"https://www.zulolo.com/app/index.php?i=3&c=entry&id=2&do=orderdetail_api&m=weisrc_dish",
+    payment:"https://www.zulolo.com/wuliang_order/payment",
     //待支付页面
     dcxz: "https://www.zulolo.com/mock/59979e65059b9c566dc7bcc6/index/dcxz",
     //post点菜数据接口
-    podc: "https://www.zulolo.com/app/index.php?i=3&c=entry&storeid=2&mode=4&do=addtoorder_api&m=weisrc_dish"
+    podc: "https://www.zulolo.com/wuliang_order/place_order"
   },
   globalData: {
     openid: "",

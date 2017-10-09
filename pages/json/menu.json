@@ -13,28 +13,28 @@
                 "sales": 22,
                 "rating": 3,
                 "price": 15,
-                "numb": 0
+                "amount": 0
             }, {
                 "name": "汉堡",
                 "src": "http://i4.piimg.com/601998/9ce47f2f19d7717d.jpg",
                 "sales": 22,
                 "rating": 3,
                 "price": 10,
-                "numb": 0
+                "amount": 0
             }, {
                 "name": "鸡翅",
                 "src": "http://i4.piimg.com/601998/a88338a6d392a569.jpg",
                 "sales": 22,
                 "rating": 3,
                 "price": 11,
-                "numb": 0
+                "amount": 0
             }, {
                 "name": "薯条",
                 "src": "http://i4.piimg.com/601998/473847a250bb0186.jpg",
                 "sales": 22,
                 "rating": 3,
                 "price": 32,
-                "numb": 0
+                "amount": 0
             }]
         }, {
             "typeName": "盖浇饭类",
@@ -44,21 +44,21 @@
                 "sales": 22,
                 "rating": 3,
                 "price": 9,
-                "numb": 0
+                "amount": 0
             }, {
                 "name": "肉末茄子盖浇饭",
                 "src": "http://i4.piimg.com/601998/23f361491b45ddf2.jpg",
                 "sales": 22,
                 "rating": 3,
                 "price": 21,
-                "numb": 0
+                "amount": 0
             }, {
                 "name": "番茄炒蛋盖浇饭",
                 "src": "http://i4.piimg.com/601998/da9e00c0bccd6fb0.jpg",
                 "sales": 22,
                 "rating": 3,
                 "price": 50,
-                "numb": 0
+                "amount": 0
             }]
         }, {
             "typeName": "养生粥类",
@@ -68,14 +68,14 @@
                 "sales": 22,
                 "rating": 3,
                 "price": 15,
-                "numb": 0
+                "amount": 0
             }, {
                 "name": "皮蛋瘦肉粥",
                 "src": "http://i4.piimg.com/601998/da9e00c0bccd6fb0.jpg",
                 "sales": 22,
                 "rating": 3,
                 "price": 12,
-                "numb": 0
+                "amount": 0
             }]
         }, {
             "typeName": "小吃类",
@@ -85,7 +85,7 @@
                 "sales": 22,
                 "rating": 3,
                 "price": 4,
-                "numb": 0
+                "amount": 0
             }]
         }]
     }

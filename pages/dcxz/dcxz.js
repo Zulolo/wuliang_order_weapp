@@ -24,19 +24,21 @@ Page({
     name: '',
     tel: '',
     sex: "",
-    zh: "",
+    desk: "",
     radioItems: [
       { name: '先生', value: '0' , checked: true},
       { name: '女士', value: '1' }
     ]
   },
+
   //打电话
-  tapCall: function () {
-    var that = this;
-    wx.makePhoneCall({
-      phoneNumber: that.data.info.tel
-    })
-  },
+  // tapCall: function () {
+  //   var that = this;
+  //   wx.makePhoneCall({
+  //     phoneNumber: that.data.info.tel
+  //   })
+  // },
+
   //初始化
   onLoad: function () {
     var that = this;
@@ -67,12 +69,14 @@ Page({
           name: infodata.name,
           tel: infodata.tel,
           sex: infodata.sex,
-          zh: infodata.zh,
+          desk: infodata.desk,
           radioItems: radioItems
         });
       } 
     })
   },
+
+  // event capture
   radioChange: function (e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value);
     var radioItems = this.data.radioItems;
@@ -83,62 +87,6 @@ Page({
       radioItems: radioItems,
       sex: e.detail.value
     });
-  },
-  //提交订单
-  sub: function (e) {
-    var that = this;
-    console.log(this.data.name);
-    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
-    if (this.data.name === '') {
-      tusi('请填写姓名');
-    } else if (this.data.tel === '') {
-      tusi('请填写手机号');
-    } else if (!myreg.test(that.data.tel)) {
-      tusi('请输入有效的手机号');
-    } else {
-      var mymsg = {
-        name: that.data.name,
-        tel: that.data.tel,
-        sex: that.data.sex,
-        zh: that.data.zh
-      };
-      var str = JSON.stringify(mymsg);
-      //存本地缓存
-      wx.setStorage({
-        key: "mymsg",
-        data: str,
-        complete: function () {
-          //整理post的提交数据
-          var postData = that.data.dcxz;
-          app.getAppid(function(appid){
-            postData.appid = appid;
-            postData.flag = "0";
-            postData.userinfo = {
-              name: that.data.name,
-              tel: that.data.tel,
-              sex: that.data.sex,
-              zh: that.data.sex,
-              address: "",
-              addrdetail: "",
-              bz: "",
-              servicetime: ""
-            };
-            var jsonur = JSON.stringify(postData);
-            app.ajax(app.api_endpoint.podc, jsonur, function(m){
-              //这边支付接口传回的参数需要重新处理
-              var id = m.data.orderid;
-              var url = '../payment/payment?id=' + id;
-              console.log(url);
-              tusi('提交成功', true, function () {
-                wx.redirectTo({
-                  url: url
-                })
-              }, true);
-            }, true);
-          });
-        }
-      })
-    }
   },
   //同步姓名
   wname: function (e) {
@@ -153,9 +101,68 @@ Page({
     })
   },
   //同步桌号
-  zh: function (e) {
+  desk: function (e) {
     this.setData({
-      zh: e.detail.value
+      desk: e.detail.value
     })
+  },
+
+  //提交订单
+  sub: function (e) {
+    var that = this;
+    console.log(this.data.name);
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+    if (this.data.name === '') {
+      tusi('请填写姓名');
+    } else if (this.data.tel === '') {
+      tusi('请填写手机号');
+    } else if (!myreg.test(that.data.tel)) {
+      tusi('请输入有效的手机号');
+    } else {
+      // input varify OK
+      var mymsg = {
+        name: that.data.name,
+        tel: that.data.tel,
+        sex: that.data.sex,
+        desk: that.data.desk
+      };
+      var str = JSON.stringify(mymsg);
+      //存本地缓存
+      wx.setStorage({
+        key: "mymsg",
+        data: str,
+        complete: function () {
+          //整理post的提交数据
+          //关键地方到了, money money, money
+          var postData = that.data.dcxz;
+          app.getOpenID([function(){
+            postData.openid = app.globalData.openid;
+            postData.flag = "0";
+            postData.userinfo = {
+              name: that.data.name,
+              tel: that.data.tel,
+              sex: that.data.sex,
+              desk: that.data.desk,
+              address: "",
+              addrdetail: "",
+              bz: "",
+              servicetime: ""
+            };
+            // var jsonur = JSON.stringify(postData);
+            app.ajax(app.api_endpoint.podc, postData, function(m){
+              //这边支付接口传回的参数需要重新处理
+              var orderid = m.data.orderid;
+              var url = '../payment/payment?orderid=' + orderid + '&flag=' + postData.flag;  
+              console.log(url);
+              tusi('提交成功', true, function () {
+                wx.redirectTo({
+                  url: url
+                })
+              });
+            }, "POST");
+          }]);
+        }
+      })
+    }
   }
 })
